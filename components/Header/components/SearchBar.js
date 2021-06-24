@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { SearchIcon } from "@heroicons/react/outline";
-export const SearchBar = () => {
+const SearchBar = () => {
 	return (
 		<div className="flex items-center">
 			<Image
@@ -21,3 +21,5 @@ export const SearchBar = () => {
 		</div>
 	);
 };
+
+export default SearchBar

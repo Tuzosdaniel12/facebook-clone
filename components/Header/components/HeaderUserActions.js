@@ -5,12 +5,25 @@ import {
 	ChevronDownIcon,
 	ViewGridIcon
 } from "@heroicons/react/solid";
+import { signOut, useSession } from "next-auth/client";
 
-export const HeaderUserActions = () => {
+const HeaderUserActions = () => {
+
+	const [session, loading] = useSession();
+
 	return (
 		<div className="flex items-center sm:space-x-2 justify-end">
-			<p className="whitespace-nowrap font-semibold pr-3">
-				Daniel Soledad
+			<Image
+				onClick={() => signOut()}
+				className="rounded-full cursor-pointer"
+				src={session.user.image}
+				width="40"
+				height="40"
+				layout="fixed"
+				alt="user image"
+			/>
+			<p className="hidden lg:inline-flex text-sm whitespace-nowrap font-semibold pr-3">
+				{session.user.name}
 			</p>
 			<ViewGridIcon className="icon" />
 			<ChatIcon className="icon" />
@@ -19,3 +32,5 @@ export const HeaderUserActions = () => {
 		</div>
 	);
 };
+
+export default HeaderUserActions

@@ -1,5 +1,4 @@
 import HeaderIcon from "./HeaderIcon";
-import Image from "next/image";
 import {
 	HomeIcon,
 	UserGroupIcon,
@@ -10,7 +9,7 @@ import {
 	ShoppingCartIcon
 } from "@heroicons/react/outline";
 
-export const ActivityHeader = () => {
+ const ActivityHeader = () => {
 	return (
 		<div className="flex justify-center flex-grow">
 			<div className="flex space-x-6 md:space-x-2">
@@ -23,3 +22,4 @@ export const ActivityHeader = () => {
 		</div>
 	);
 };
+export default ActivityHeader;
