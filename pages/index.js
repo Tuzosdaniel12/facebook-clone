@@ -13,12 +13,16 @@ export default function Home({session, posts}) {
 		<div className="h-screen bg-gray-100 overflow-hidden">
 			<Head>
 				<title>Facebook</title>
+				<link
+					rel="shortcut icon"
+					href="https://cdn.icon-icons.com/icons2/1826/PNG/512/4202110facebooklogosocialsocialmedia-115707_115594.png"
+				/>
 			</Head>
 			<Header />
 			<main className="flex">
 				<SideBar />
 				<Feed posts={posts} />
-				<Widgets/>
+				<Widgets />
 			</main>
 		</div>
   );
