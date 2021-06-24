@@ -17,14 +17,13 @@ const InputBox = () => {
 
 		if(!inputRef.current.value) return
 
-		const doc = await db.collection('post').add({
+		const doc = await db.collection("posts").add({
 			message: inputRef.current.value,
 			name: session.user.name,
 			email: session.user.email,
 			image: session.user.image,
 			timestamp: firebase.firestore.FieldValue.serverTimestamp()
-
-		})
+		});
 
 		if (imagePost) {
         	const uploadTask = storage
