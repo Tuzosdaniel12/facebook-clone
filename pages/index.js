@@ -12,7 +12,7 @@ export default function Home({session, posts}) {
   return (
 		<div className="h-screen bg-gray-100 overflow-hidden">
 			<Head>
-				<title>Facebook</title>
+				<title>Facebook Clone</title>
 				<link
 					rel="shortcut icon"
 					href="https://cdn.icon-icons.com/icons2/1826/PNG/512/4202110facebooklogosocialsocialmedia-115707_115594.png"
