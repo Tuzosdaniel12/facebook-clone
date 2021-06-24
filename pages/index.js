@@ -4,6 +4,7 @@ import Header from "../components/Header"
 import Login from "../components/Login";
 import SideBar from "../components/SideBar";
 import Feed from "../components/Feed";
+import Widgets from "../components/Widgets";
 import { db } from '../firebase';
 
 export default function Home({session, posts}) {
@@ -17,6 +18,7 @@ export default function Home({session, posts}) {
 			<main className="flex">
 				<SideBar />
 				<Feed posts={posts} />
+				<Widgets/>
 			</main>
 		</div>
   );
