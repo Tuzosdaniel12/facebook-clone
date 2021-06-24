@@ -31,12 +31,11 @@ const stories = [
 const Stories = () => {
 	return (
         <div className="flex justify-center space-x-3 mx-auto">
-        {
-            stories.map(({name, src, profile},index) => (
-                <StoryCard name={name} src={src} profile={profile} key={index}/>
-            ))
-        }
-
+            {
+                stories.map(({name, src, profile},index) => (
+                    <StoryCard name={name} src={src} profile={profile} key={index}/>
+                ))
+            }
         </div>
     )
 };
