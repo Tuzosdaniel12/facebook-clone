@@ -10,7 +10,7 @@ const Post = ({ name, message, email, postImage, image, timestamp, postId }) => 
 	const removePost = async (id) =>{
 		try{
 			//create a ref to post 
-			const deletePost = db.collection("post").doc(id).delete();
+			const deletePost = db.collection("posts").doc(id).delete();
 
 			console.log("Document successfully deleted!");
 
