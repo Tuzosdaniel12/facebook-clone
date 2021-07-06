@@ -15,7 +15,7 @@ export default function Home({session, posts}) {
 				<title>Facebook Clone</title>
 				<link
 					rel="shortcut icon"
-					href="https://cdn.icon-icons.com/icons2/1826/PNG/512/4202110facebooklogosocialsocialmedia-115707_115594.png"
+					href="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512"
 				/>
 			</Head>
 			<Header />
