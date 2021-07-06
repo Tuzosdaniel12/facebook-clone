@@ -19,6 +19,7 @@ const Posts = ({ posts }) => {
 							timestamp={post.data().timestamp}
 							image={post.data().image}
 							postImage={post.data().postImage}
+							postId={post.id}
 						/>
 				  ))
 				: posts.map((post) => (
@@ -30,6 +31,7 @@ const Posts = ({ posts }) => {
 							timestamp={post.timestamp}
 							image={post.image}
 							postImage={post.postImage}
+							postId={post.id}
 						/>
 				  ))}
 		</div>

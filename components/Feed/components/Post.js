@@ -1,8 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
-import { ChatAltIcon, ShareIcon, ThumbUpIcon } from "@heroicons/react/outline";
+import { ChatAltIcon, ShareIcon, ThumbUpIcon, TrashIcon } from "@heroicons/react/outline";
+import { useSession } from "next-auth/client";
 import Image from "next/image";
+import { db, storage } from "../../../firebase";
 
-const Post = ({ name, message, email, postImage, image, timestamp }) => {
+const Post = ({ name, message, email, postImage, image, timestamp, postId }) => {
+	const [session] = useSession();
+	
+	const removePost = async (id) =>{
+		try{
+			//create a ref to post 
+			const deletePost = await storage.ref(`posts/${id}`);
+
+			await deletePost.delete();
+
+			console.log("Document successfully deleted!");
+
+		}catch(error){
+			console.error("Error removing document: ", error);
+		}
+		
+	}					
 	return (
 		<div className="flex flex-col">
 			<div className="p-5 bg-white mt-5 rounded-t-2xl shadow-sm">
@@ -12,7 +30,7 @@ const Post = ({ name, message, email, postImage, image, timestamp }) => {
 						src={image}
 						width={40}
 						height={40}
-                        alt=""
+						alt=""
 					/>
 					<div>
 						<p className="font-medium">{name}</p>
@@ -30,10 +48,15 @@ const Post = ({ name, message, email, postImage, image, timestamp }) => {
 			</div>
 			{postImage && (
 				<div className="relative h-56 md:h-96 bg-white">
-					<Image src={postImage} objectFit="cover" layout="fill" alt=""/>
+					<Image
+						src={postImage}
+						objectFit="cover"
+						layout="fill"
+						alt=""
+					/>
 				</div>
 			)}
-            
+
 			<div className="flex justify-between items-center rounded-b-2xl bg-white shadow-md text-gray-400 border-t">
 				<div className="inputIcon p-3 rounded-none rounded-bl-2xl">
 					<ThumbUpIcon className="h-4" />
@@ -45,10 +68,18 @@ const Post = ({ name, message, email, postImage, image, timestamp }) => {
 					<p className="text-xs sm:text-base">Comment</p>
 				</div>
 
-				<div className="inputIcon p-3 rounded-none rounded-br-2xl">
+				<div
+					className={`inputIcon p-3 rounded-none 
+					${session.user.name === name ? "" : "rounded-br-2xl"}`}>
 					<ShareIcon className="h-4" />
 					<p className="text-xs sm:text-base">Share</p>
 				</div>
+				{session.user.name === name && (
+					<div className="inputIcon p-3 rounded-none rounded-br-2xl" onClick={()=> removePost(postId)}>
+						<TrashIcon className="h-4" />
+						<p className="text-xs sm:text-base">Delete</p>
+					</div>
+				)}
 			</div>
 		</div>
 	);
