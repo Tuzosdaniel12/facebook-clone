@@ -15,7 +15,7 @@ import SideBarRow from "./components/SideBarRow";
 const SideBar = () => {
     const [session, loading] = useSession();
 	return (
-		<div className="p-2 mt-5 max-w-[600px] xl:min-w-[300px]">
+		<div className="hidden md:flex flex-col p-2 mt-5 max-w-[600px] xl:min-w-[300px]">
 			<SideBarRow src={session.user.image} title={session.user.name} />
 			<SideBarRow Icon={UsersIcon} title="Friends" />
 			<SideBarRow Icon={UserGroupIcon} title="Groups" />
